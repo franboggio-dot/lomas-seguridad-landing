@@ -37,6 +37,11 @@ if (process.env.MONGODB_URI) {
 const contactRoutes = require('./routes/contact');
 app.use('/api/contact', contactRoutes);
 
+// Explicit logo route
+app.get('/logo.png', (req, res) => {
+    res.sendFile(path.join(__dirname, 'LogoLomas.png'));
+});
+
 // Root route - serve index.html
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
