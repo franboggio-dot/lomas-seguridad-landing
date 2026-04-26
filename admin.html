@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | Lomas Seguridad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body { background: #f4f4f4; color: #333; }
+        .admin-sidebar { width: 250px; background: #0a0a0a; color: white; height: 100vh; position: fixed; padding: 2rem; }
+        .admin-content { margin-left: 250px; padding: 3rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem; }
+        .stat-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .message-list { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 1.5rem; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #fafafa; font-weight: 700; }
+        tr:hover { background: #fdfdfd; }
+        .status-badge { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .status-new { background: #e0f2fe; color: #0369a1; }
+        .status-read { background: #f3f4f6; color: #6b7280; }
+    </style>
+</head>
+<body>
+    <div class="admin-sidebar">
+        <img src="Captura de pantalla 2026-04-25 233925.png" alt="Logo" style="width: 100%; margin-bottom: 3rem;">
+        <ul class="nav-links" style="flex-direction: column; gap: 1.5rem;">
+            <li><a href="#" style="color: white;"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="#" style="color: white;"><i class="fas fa-envelope"></i> Mensajes</a></li>
+            <li><a href="#" style="color: white;"><i class="fas fa-calendar"></i> Reservas</a></li>
+            <li><a href="#" style="color: white;"><i class="fas fa-cog"></i> Configuración</a></li>
+        </ul>
+    </div>
+    
+    <div class="admin-content">
+        <h1>Dashboard General</h1>
+        <p style="color: #666; margin-bottom: 3rem;">Bienvenido al centro de control de Lomas Seguridad.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Mensajes Nuevos</h3>
+                <span style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">12</span>
+            </div>
+            <div class="stat-card">
+                <h3>Total Consultas</h3>
+                <span style="font-size: 2.5rem; font-weight: 800; color: #333;">154</span>
+            </div>
+            <div class="stat-card">
+                <h3>Respuesta Promedio</h3>
+                <span style="font-size: 2.5rem; font-weight: 800; color: #10b981;">2.4hs</span>
+            </div>
+        </div>
+
+        <h2>Consultas Recientes</h2>
+        <div class="message-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Propiedad</th>
+                        <th>Interés</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="message-table-body">
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 3rem; color: #999;">Cargando mensajes...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
