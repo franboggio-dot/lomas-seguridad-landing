@@ -13,11 +13,16 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(helmet({
-    contentSecurityPolicy: false, // For local testing with external CDNs
+    contentSecurityPolicy: false,
 }));
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from root and specific folders
 app.use(express.static(path.join(__dirname)));
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Database Connection
 if (process.env.MONGODB_URI) {
