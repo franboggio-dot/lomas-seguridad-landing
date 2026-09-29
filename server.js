@@ -18,7 +18,8 @@ app.use(helmet({
 app.use(cors());
 app.use(express.json());
 
-// Serve static files from root and specific folders
+// Serve the Vite build as the main website; keep legacy assets available.
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname)));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
@@ -44,7 +45,7 @@ app.get('/logo.png', (req, res) => {
 
 // Root route - serve index.html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // Admin route
